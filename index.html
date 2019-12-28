@@ -63,12 +63,12 @@
 								
 								event.location = events[i].location;
 								if(event.location === undefined) {
-									event.location = "<i>None Provided</i>";
+									event.location = "<i>No Location Provided</i>";
 								}
 
 								event.description = events[i].description;
 								if(event.description === undefined){
-									event.description = "<i>None Provided</i>";
+									event.description = "<i>No Description Provided</i>";
 								}
 								event.description = event.description.replace(new RegExp('\r?\n','g'), '<br />');
 
