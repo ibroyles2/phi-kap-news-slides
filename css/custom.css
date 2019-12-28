@@ -1,0 +1,45 @@
+.row-striped:nth-of-type(odd){
+    background-color: #efefef;
+    border-left: 4px #800000 solid;
+  }
+  
+.row-striped:nth-of-type(even){
+    background-color: #ffffff;
+    border-left: 4px #F8D410 solid;
+}
+  
+.row-striped {
+    padding: 15px 0;
+}
+
+.calendar {
+    text-align: left;
+}
+
+.calendar h1 {
+    font-size: 3.5rem;
+}
+
+.calendar h2 {
+    color: black;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.calendar h3 {
+    color: black;
+    font-size: 1.75rem;
+    margin: 0;
+    margin-bottom: -15px;
+}
+
+.calendar p {
+    color: black;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.calendar ul{
+    font-size: 1rem;
+    margin: 0;
+}

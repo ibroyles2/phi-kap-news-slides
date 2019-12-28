@@ -39,22 +39,22 @@
 
 			// The "normal" size of the presentation, aspect ratio will be preserved
 			// when the presentation is scaled to fit different resolutions
-			width: 960,
-			height: 700,
+			width: 1280,
+			height: 720,
 
 			// Factor of the display size that should remain empty around the content
-			margin: 0.04,
+			margin: 0.1,
 
 			// Bounds for smallest/largest possible scale to apply to content
 			minScale: 0.2,
 			maxScale: 2.0,
 
 			// Display presentation control arrows
-			controls: true,
+			controls: false,
 
 			// Help the user learn the controls by providing hints, for example by
 			// bouncing the down arrow when they first encounter a vertical slide
-			controlsTutorial: true,
+			controlsTutorial: false,
 
 			// Determines where controls appear, "edges" or "bottom-right"
 			controlsLayout: 'bottom-right',
@@ -64,7 +64,7 @@
 			controlsBackArrows: 'faded',
 
 			// Display a presentation progress bar
-			progress: true,
+			progress: false,
 
 			// Display the page number of the current slide
 			// - true:    Show slide number
@@ -86,7 +86,7 @@
 			// - "all":      Always show the slide number
 			// - "print":    Only when printing to PDF
 			// - "speaker":  Only in the speaker view
-			showSlideNumber: 'all',
+			showSlideNumber: 'print',
 
 			// Use 1 based indexing for # links to match slide number (default is zero
 			// based)
@@ -94,7 +94,7 @@
 
 			// Add the current slide number to the URL hash so that reloading the
 			// page/copying the URL will return you to the same slide
-			hash: false,
+			hash: true,
 
 			// Push each slide change to the browser history.  Implies `hash: true`
 			history: false,
@@ -119,7 +119,7 @@
 			touch: true,
 
 			// Loop the presentation
-			loop: false,
+			loop: true,
 
 			// Change the presentation direction to be RTL
 			rtl: false,
@@ -158,18 +158,18 @@
 
 			// Flags whether to include the current fragment in the URL,
 			// so that reloading brings you to the same fragment position
-			fragmentInURL: false,
+			fragmentInURL: true,
 
 			// Flags if the presentation is running in an embedded mode,
 			// i.e. contained within a limited portion of the screen
-			embedded: false,
+			embedded: true,
 
 			// Flags if we should show a help overlay when the question-mark
 			// key is pressed
 			help: true,
 
 			// Flags if it should be possible to pause the presentation (blackout)
-			pause: true,
+			pause: false,
 
 			// Flags if speaker notes should be visible to all viewers
 			showNotes: false,
@@ -192,7 +192,7 @@
 			//           is present on the current slide or fragment
 			// - 1+:     All slides will progress automatically at the given interval
 			// - false:  No auto-sliding, even if data-autoslide is present
-			autoSlide: 0,
+			autoSlide: 10000, // 10 seconds
 
 			// Stop auto-sliding after user input
 			autoSlideStoppable: true,
@@ -277,7 +277,7 @@
 			hideInactiveCursor: true,
 
 			// Time before the cursor is hidden (in ms)
-			hideCursorTime: 5000,
+			hideCursorTime: 100, // 0.1 seconds
 
 			// Script dependencies to load
 			dependencies: []
