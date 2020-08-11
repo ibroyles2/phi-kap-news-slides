@@ -3,16 +3,16 @@ const currentDate = new Date(dateObject).toISOString();
 const APIKey = "AIzaSyDHl44J_hE5kwLQwyP-IWtxl4zS2hgorwc";
 const CalendarID = "296lgns27im7bgtotmjaac7uko@group.calendar.google.com";
 const getURL = "https://www.googleapis.com/calendar/v3/calendars/" + CalendarID + "/events?key=" + APIKey + "&futureevents=true&timeMin=" + currentDate + "&singleEvents=true&orderBy=startTime";
-var xhr = new XMLHttpRequest();
+var calendarRequest = new XMLHttpRequest();
 
-xhr.open('GET', getURL, true);
-xhr.send();
+calendarRequest.open('GET', getURL, true);
+calendarRequest.send();
 
-xhr.onreadystatechange = processRequest;
+calendarRequest.onreadystatechange = processRequest;
 
 function processRequest(e) {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var response = JSON.parse(xhr.responseText);
+    if (calendarRequest.readyState == 4 && calendarRequest.status == 200) {
+        var response = JSON.parse(calendarRequest.responseText);
         extractTopEvents(response);
     }
 }
@@ -21,7 +21,6 @@ function extractTopEvents(response) {
     var events = response.items;
     var currentEvents = [];
     const eventNumber = 10;
-    console.log(events);
 
     for (i = 0; i < eventNumber; i++) {
         let event = { title: "", start: "", end: "", location: "", description: "" };
