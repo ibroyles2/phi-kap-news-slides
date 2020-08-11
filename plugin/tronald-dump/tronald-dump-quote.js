@@ -19,6 +19,9 @@ function processQuoteRequest(e) {
 function getTweetEmbedder(response) {
     var tweetUrl = response._embedded.source[0].url;
     embeddRequest.open('GET', twitterEmbedUrl + tweetUrl, true);
+    embeddRequest.setRequestHeader("Access-Control-Allow-Origin", "*");
+    embeddRequest.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+    embeddRequest.setRequestHeader("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization, X-Request-With");
     embeddRequest.send();
 
     embeddRequest.onreadystatechange = processTweetEmbedderRequest;
