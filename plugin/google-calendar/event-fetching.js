@@ -19,6 +19,7 @@ function processRequest(e) {
 
 function extractTopEvents(response) {
     var events = response.items;
+    console.log(events);
     var currentEvents = [];
     const eventNumber = 10;
 
@@ -46,6 +47,7 @@ function extractTopEvents(response) {
 
 function getTimes(startObject, endObject, event) {
     let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let start;
     let end;
 
@@ -56,8 +58,11 @@ function getTimes(startObject, endObject, event) {
     }
 
     let startDateTime = new Date(start);
-    event.start = monthNames[startDateTime.getMonth()];
-    event.start = event.start + " " + startDateTime.getDate().toString();
+    let startDay = startDateTime.getDay();
+    let startMonth = startDateTime.getMonth();
+    let startDate = startDateTime.getDate();
+    event.start = dayNames[startDay] + ", " + monthNames[startMonth];
+    event.start += " " + startDate.toString();
 
     if (startObject.date === undefined) {
         event.start = event.start + ", " + startDateTime.toLocaleTimeString('en-US', { timeStyle: 'short' });
@@ -70,11 +75,18 @@ function getTimes(startObject, endObject, event) {
     }
 
     let endDateTime = new Date(end);
-    event.end = monthNames[endDateTime.getMonth()];
-    event.end = event.end + " " + endDateTime.getDate().toString();
-
+    let endDay = endDateTime.getDay();
+    let endMonth = endDateTime.getMonth();
+    let endDate = endDateTime.getDate();
+    event.end = "";
+    if(endMonth != startMonth || endDate != startDate) {
+        event.end += dayNames[endDay] + ", " + monthNames[endMonth] + " " + endDate.toString();
+        if (endObject.date === undefined) {
+            event.end += ", ";
+        }
+    }
     if (endObject.date === undefined) {
-        event.end = event.end + ", " + endDateTime.toLocaleTimeString('en-US', { timeStyle: 'short' });
+        event.end += endDateTime.toLocaleTimeString('en-US', { timeStyle: 'short' });
     }
     return event;
 }
