@@ -53,11 +53,15 @@ function getTimes(startObject, endObject, event) {
 
     if (startObject.date != null) {
         start = startObject.date;
+        start += "T00:00:00-06:00";
     } else {
         start = startObject.dateTime;
     }
 
+    console.log(start);
+
     let startDateTime = new Date(start);
+    console.log(startDateTime);
     let startDay = startDateTime.getDay();
     let startMonth = startDateTime.getMonth();
     let startDate = startDateTime.getDate();
@@ -88,6 +92,13 @@ function getTimes(startObject, endObject, event) {
     if (endObject.date === undefined) {
         event.end += endDateTime.toLocaleTimeString('en-US', { timeStyle: 'short' });
     }
+
+    if(event.end == "") {
+        event.time = event.start + " ";
+    } else {
+        event.time = event.start + " - " + event.end;
+    }
+
     return event;
 }
 
@@ -97,7 +108,7 @@ function sendToPage(eventList, set) {
         htmlContent += "<div class=\"row row-striped\"><div class=\"col\"><h3 class=\"text-uppercase\"><strong>"; // opener
         htmlContent += eventList[i].title; // title
         htmlContent += "</strong></h3><ul class=\"list-inline\"><li class=\"list-inline-item\"><i class=\"fa fa-calendar-o\" aria-hidden=\"true\"></i>";
-        htmlContent += " " + eventList[i].start + " - " + eventList[i].end;
+        htmlContent += " " + eventList[i].time;
         htmlContent += "</li><li class=\"list-inline-item\"><i class=\"fa fa-location-arrow\" aria-hidden=\"true\"></i>";
         htmlContent += " " + eventList[i].location;
         htmlContent += "</li></ul><p>" + eventList[i].description + "</p></div></div>"
